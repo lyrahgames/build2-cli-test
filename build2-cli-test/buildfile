@@ -1,0 +1,12 @@
+exe{build2-cli-test}: {hxx ixx txx cxx}{** -options} {hxx ixx cxx}{options}
+{
+  test.arguments = --help
+}
+
+<{hxx ixx cxx}{options}>: cli{options}
+{
+  dist = true
+  clean = ($src_root != $out_root)
+}
+
+cxx.poptions =+ "-I$out_root" "-I$src_root"

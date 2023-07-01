@@ -1,0 +1,42 @@
+# Uncomment to suppress warnings coming from external libraries.
+#
+#cxx.internal.scope = current
+
+cxx.std = latest
+
+using cxx
+
+hxx{*}: extension = hpp
+ixx{*}: extension = ipp
+txx{*}: extension = tpp
+cxx{*}: extension = cpp
+
+# Assume headers are importable unless stated otherwise.
+#
+hxx{*}: cxx.importable = true
+
+# The test target for cross-testing (running tests under Wine, etc).
+#
+test.target = $cxx.target
+
+# Define file type and its extension for CLI specifications.
+#
+define cli: file
+cli{*}: extension = cli
+
+# Immediately import the CLI compiler.
+#
+import! clic = cli%exe{cli}
+
+# Provide a regex-based ad hoc rule to run the CLI compiler.
+#
+<{hxx ixx cxx}{~'/(.*)/'}>: cli{~'/\1/'} $clic
+{{
+  diag cli $>
+  $clic \
+    --output-dir $out_base \
+    --hxx-suffix .hpp \
+    --ixx-suffix .ipp \
+    --cxx-suffix .cpp \
+    $path($<[0])
+}}

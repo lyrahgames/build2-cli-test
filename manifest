@@ -1,0 +1,14 @@
+: 1
+name: build2-cli-test
+version: 0.1.0-a.0.z
+summary: build2-cli-test C++ executable
+license: GPL-3.0-or-later ; GNU General Public License v3.0 or later.
+
+description-file: README.md
+url: https://example.org/build2-cli-test
+email: lyrahgames@mailbox.org
+#build-error-email: lyrahgames@mailbox.org
+
+depends: * build2 >= 0.15.0
+depends: * bpkg >= 0.15.0
+depends: * cli ^ 1.1.0

@@ -1,0 +1,7 @@
+project = build2-cli-test
+
+using version
+using config
+using test
+using install
+using dist
