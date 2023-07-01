@@ -26,7 +26,7 @@ cli{*}: extension = cli
 
 # Immediately import the CLI compiler.
 #
-import! clic = cli%exe{cli}
+import! [metadata] clic = cli%exe{cli}
 
 # Provide a regex-based ad hoc rule to run the CLI compiler.
 #
